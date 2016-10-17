@@ -1,0 +1,3 @@
+import time_sheets
+
+time_sheets.create_user('josh', 'test', 'admin')
