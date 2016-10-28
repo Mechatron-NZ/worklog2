@@ -4,6 +4,7 @@ import time
 import datetime
 
 
+
 def clear_screen():
     if os.name == 'nt':
         os.system('cls')
