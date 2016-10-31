@@ -1,7 +1,11 @@
+import os
+
 from peewee import *
 from passlib.hash import bcrypt_sha256
 
-db = SqliteDatabase('time_sheets.db')
+from tools import BASE_DIR
+DATABASE_NAME = os.path.join(BASE_DIR, 'db', 'time_sheets.db')
+db = SqliteDatabase(DATABASE_NAME)
 
 
 

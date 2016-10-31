@@ -1,4 +1,5 @@
 import re
+import os
 import datetime
 
 from peewee import *
@@ -6,7 +7,7 @@ from peewee import *
 from dogbert_create import DogbertCreate
 
 import time_sheets
-from tools import clear_screen, draw_file, my_exit
+from tools import clear_screen, draw_file, my_exit, BASE_DIR
 
 
 # note to tester user: dogbert password: $$$
@@ -95,7 +96,7 @@ class DogbertLog(DogbertCreate):
         """login screen for entering username and password calls the function that checks database"""
         while True:
             clear_screen()
-            draw_file('login.txt')
+            draw_file(os.path.join(BASE_DIR, 'ascii_art', 'login.txt'))
             username = input('Username: ')
             password = input('Password: ')
             if time_sheets.verify_login(username=username, password=password):
@@ -215,13 +216,13 @@ Comments: {}""".format((index + 1), len(selected), entry.username, entry.project
     def menu_main(self):
         """displays picture for current user if there is one opens a menu with main menu options"""
         clear_screen()
-        dilbert_charaters = {'dilbert': 'dilbert.txt',
-                             'alice': 'alice.txt',
-                             'wally': 'wally.txt',
-                             'asok': 'asok.txt',
-                             'pointyhairedboss': 'pointyhairedboss.txt',
-                             'catbert': 'catbert.txt',
-                             'dogbert': 'dogbert.txt'}
+        dilbert_charaters = {'dilbert': os.path.join(BASE_DIR, 'ascii_art', 'dilbert.txt'),
+                             'alice': os.path.join(BASE_DIR, 'ascii_art', 'alice.txt'),
+                             'wally': os.path.join(BASE_DIR, 'ascii_art', 'wally.txt'),
+                             'asok': os.path.join(BASE_DIR, 'ascii_art', 'asok.txt'),
+                             'pointyhairedboss': os.path.join(BASE_DIR, 'ascii_art', 'pointyhairedboss.txt'),
+                             'catbert': os.path.join(BASE_DIR, 'ascii_art', 'catbert.txt'),
+                             'dogbert': os.path.join(BASE_DIR, 'ascii_art', 'dogbert.txt')}
         try:
             file = dilbert_charaters[self.current_user]
         except KeyError:

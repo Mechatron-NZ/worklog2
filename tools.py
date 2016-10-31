@@ -3,7 +3,7 @@ import sys
 import time
 import datetime
 
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def clear_screen():
     if os.name == 'nt':
@@ -26,6 +26,6 @@ def draw_file(ascii_file):
 def my_exit():
     """clears screen and display ascii image before exiting"""
     clear_screen()
-    draw_file("getbacktowork.txt")
+    draw_file(os.path.join(BASE_DIR, 'ascii_art', "getbacktowork.txt"))
     sys.exit()
 
